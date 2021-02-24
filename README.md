@@ -1,6 +1,8 @@
 # codebook-builder
 a latex container with Consolas and NotoSansCJK fonts
 
+![docker status](https://github.com/hjackh/codebook-builder/actions/workflows/docker-publish.yml/badge.svg)
+
 ## Usage
 
 > change directory to your local file first
