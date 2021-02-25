@@ -7,7 +7,7 @@ on:
 
   # Run tests for any PRs.
   pull_request:
-
+  
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
@@ -74,6 +74,6 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            docker.pkg.github.com/${{ steps.set-image-id.outputs.IMAGE_ID }}:latest
+            docker.pkg.github.com/${{ steps.set-image-id.outputs.IMAGE_ID }}/${{ github.event.repository.name }}:latest
             ghcr.io/${{ steps.set-image-id.outputs.IMAGE_ID }}:latest
             ${{ steps.set-image-id.outputs.IMAGE_ID }}:latest
