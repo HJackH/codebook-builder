@@ -58,7 +58,6 @@ jobs:
       
       - name: Set Image ID
         id: set-image-id
-        shell: bash
         run: |
           IMAGE_ID=${{ github.repository }}
           
