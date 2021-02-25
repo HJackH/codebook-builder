@@ -38,7 +38,7 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
     ./install-tl --profile=../texlive/texlive.profile
 
 # install texlive packages
-RUN tlmgr install $(cat texlive/texlive_packages.txt) && rm -r texlive
+RUN tlmgr install $(cat ./texlive/texlive_packages.txt) && rm -r ./texlive
 RUN tlmgr update --self --all --no-auto-install
 
 VOLUME ["/source"]
