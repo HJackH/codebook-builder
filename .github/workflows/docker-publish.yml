@@ -62,9 +62,7 @@ jobs:
           IMAGE_ID=${{ github.repository }}
           
           # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          
-          echo '::set-output name=IMAGE_ID::$IMAGE_ID'
+          echo '::set-output name=IMAGE_ID::$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')'
           
       - name: Build and push
         uses: docker/build-push-action@v2
