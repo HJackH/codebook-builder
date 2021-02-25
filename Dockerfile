@@ -30,15 +30,28 @@ RUN mkdir /tmp/noto && \
 
 # install texlive
 ENV PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-COPY texlive texlive
+COPY texlive.profile texlive.profile
 RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
     tar -xzf install-tl-unx.tar.gz && \
     rm install-tl-unx.tar.gz && \
     cd install-tl-* && \
-    ./install-tl --profile=../texlive/texlive.profile
+    ./install-tl --profile=../texlive.profile \
+    rm ../texlive.profile
 
 # install texlive packages
-RUN tlmgr install $(cat ./texlive/texlive_packages.txt) && rm -r ./texlive
+RUN tlmgr install xetex \
+    texliveonfly \
+    latexmk \
+    collection-langeuropean \
+    collection-fontsrecommended \
+    luaotfload \
+    fontspec \
+    listings \
+    titlesec \
+    xecjk \
+    ctex \
+    xcolor 
+
 RUN tlmgr update --self --all --no-auto-install
 
 VOLUME ["/source"]
