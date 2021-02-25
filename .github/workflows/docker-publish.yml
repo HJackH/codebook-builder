@@ -26,7 +26,7 @@ jobs:
             docker build . --file Dockerfile
           fi
 
-  push:
+  build-push:
     # Ensure test job passes before pushing image.
     needs: test
 
@@ -55,6 +55,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+      
+      - name: Set Image ID
+        id: set-image-id
+        run: |
+          IMAGE_ID=${{ github.repository }}
+          
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          
+          echo '::set-output name=IMAGE_ID::$IMAGE_ID'
           
       - name: Build and push
         uses: docker/build-push-action@v2
@@ -63,7 +73,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            user/app:latest
-            user/app:1.0.0
-            ghcr.io/user/app:latest
-            ghcr.io/user/app:1.0.0
+            ${{ steps.set-image-id.outputs.IMAGE_ID }}:latest
+            ghcr.io/${{ steps.set-image-id.outputs.IMAGE_ID }}:latest
