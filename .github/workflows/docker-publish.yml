@@ -63,5 +63,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            user/app:latest
-            ghcr.io/user/app:latest
+            ${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:latest
