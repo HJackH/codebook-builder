@@ -79,5 +79,5 @@ jobs:
 
       - name: Push to GitHub Packages Docker Registry
         run: |
-          docker tag ${{ steps.set-image-id.outputs.IMAGE_ID }}:latest docker.pkg.github.com/${{ steps.set-image-id.outputs.IMAGE_ID }}/${{ github.event.repository.name }}:latest
+          docker tag ${{ steps.set-image-id.outputs.IMAGE_ID }} docker.pkg.github.com/${{ steps.set-image-id.outputs.IMAGE_ID }}/${{ github.event.repository.name }}:latest
           docker push docker.pkg.github.com/${{ steps.set-image-id.outputs.IMAGE_ID }}/${{ github.event.repository.name }}:latest
