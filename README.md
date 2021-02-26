@@ -4,7 +4,7 @@ a latex container with Consolas and NotoSansCJK fonts
 ![docker status](https://github.com/hjackh/codebook-builder/actions/workflows/docker-publish.yml/badge.svg)
 
 ## Pull image
-* Available on DockHub
+* Available on DockerHub
 ```
 $ docker pull hjackh/codebook-builder
 ```
