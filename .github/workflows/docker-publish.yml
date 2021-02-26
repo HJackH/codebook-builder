@@ -76,10 +76,10 @@ jobs:
           docker build . --file Dockerfile \
             -t ${{ steps.set-rg-id.outputs.DOCKER_ID }}:$VERSION \
             -t ${{ steps.set-rg-id.outputs.GHCR_ID }}:$VERSION \
-            -t ${{ steps.set-rg-id.outputs.GHCR_ID }}:$VERSION
+            -t ${{ steps.set-rg-id.outputs.GHPKG_ID }}:$VERSION
 
       - name: Push Image
         run: |
           docker push ${{ steps.set-rg-id.outputs.DOCKER_ID }}:$VERSION
           docker push ${{ steps.set-rg-id.outputs.GHCR_ID }}:$VERSION
-          docker push ${{ steps.set-rg-id.outputs.GHCR_ID }}:$VERSION
+          docker push ${{ steps.set-rg-id.outputs.GHPKG_ID }}:$VERSION
