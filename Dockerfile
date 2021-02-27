@@ -7,15 +7,15 @@ RUN apt-get update && apt-get install -y wget unzip python perl
 RUN apt-get install -y ttf-mscorefonts-installer fontconfig
 RUN apt-get clean
 
-# install Consolas font
-RUN mkdir /tmp/consolas && \
-    cd /tmp/consolas && \
-    wget -O consolas.zip https://fontsnetwork.com/download/consolas/ && \
-    unzip consolas.zip && \
-    mkdir -p /usr/share/fonts/consolas && \
-    mv -t /usr/share/fonts/consolas *.TTF && \
-    rm -r /tmp/consolas && \
-    cd /usr/share/fonts/consolas && \
+# install Inconsolata font
+RUN mkdir /tmp/inconsolata && \
+    cd /tmp/inconsolata && \
+    wget -O inconsolata.zip https://fonts.google.com/download?family=Inconsolata && \
+    unzip inconsolata.zip && \
+    mkdir -p /usr/share/fonts/inconsolata && \
+    mv -t /usr/share/fonts/inconsolata ./static/*.ttf && \
+    rm -r /tmp/inconsolata && \
+    cd /usr/share/fonts/inconsolata && \
     mkfontscale && mkfontdir && fc-cache -fv
 
 # install NotoSansCJK font
