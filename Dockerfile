@@ -13,7 +13,7 @@ RUN mkdir /tmp/inconsolata && \
     wget -O inconsolata.zip https://fonts.google.com/download?family=Inconsolata && \
     unzip inconsolata.zip && \
     mkdir -p /usr/share/fonts/inconsolata && \
-    mv -t /usr/share/fonts/inconsolata ./static/*.ttf && \
+    mv -t /usr/share/fonts/inconsolata ./static/*/*.ttf && \
     rm -r /tmp/inconsolata && \
     cd /usr/share/fonts/inconsolata && \
     mkfontscale && mkfontdir && fc-cache -fv
